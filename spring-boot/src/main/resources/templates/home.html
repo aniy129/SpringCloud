@@ -1,0 +1,26 @@
+<!--suppress ALL -->  <!-- 前面的注释用于去掉警告 -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+All UserInfo <br/>
+<table>
+<tr th:each="user : ${userInfo}">
+<td th:text="${user.id}"></td>
+<td th:text="${user.name}"></td>
+<td th:text="${user.age}"></td>
+<td th:text="${user.birthDay}"></td>
+</tr>
+</table>
+<!-- 调用java方法-->
+<p>Hello, [[${m.getStr("hello")}]]!</p>
+<p th:text="${m.getStr('hello')}"></p>
+
+<div th:text="${#strings.isEmpty('yes')}"></div>
+
+<div th:text="${ser.getAll().toString()}"></div>
+</body>
+</html>

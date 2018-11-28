@@ -1,0 +1,16 @@
+server:
+  port: 10122
+spring:
+  application:
+    name: consumner-fegin
+
+  zipkin:
+    base-url: http://localhost:9411
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10009/eureka/
+
+feign:
+  hystrix:
+   enabled: true

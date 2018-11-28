@@ -1,0 +1,84 @@
+server:
+  port: 10110
+#  address: 192.168.142.1
+spring:
+  thymeleaf:
+    servlet:
+      content-type: text/html
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+
+  # 开发阶段务必关闭缓存 (=false)
+
+  mvc:
+    # 静态文件匹配地址模式
+    static-path-pattern: /**
+    favicon:
+      enabled: false
+
+  resources:
+    #静态文件查找位置
+    static-locations: classpath:/static/
+  #数据库配置
+  datasource:
+    url: jdbc:mysql://192.168.142.180:3306/spring_boot?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    tomcat:
+      max-active: 100
+      max-idle: 200
+      initial-size: 20
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    open-in-view: true
+  #    properties:
+  #      hibernate:
+  #        hbm2ddl:
+  #          auto: validate
+
+  # redis 配置
+  redis:
+    database: 0
+    host: 192.168.142.171
+    port: 6379
+    timeout: 1000ms
+    jedis:
+      pool:
+        max-active: 20
+        max-idle: 8
+        min-idle: 0
+
+  rabbitmq:
+    host: 192.168.142.181
+    port: 5672
+    username: admin
+    password: admin
+
+  data:
+    mongodb:
+      uri: mongodb://192.168.142.171:27017/test
+
+#上传配置
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 200MB
+
+#自定义配置通过@Value("${my.val}")读取
+my:
+  val: csk
+
+logging:
+  path: D:\log\boot
+
+
+
